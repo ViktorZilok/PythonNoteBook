@@ -10,19 +10,19 @@ def new_file():
 
 def open_file():
     global file_name
-    inp = askopenfile(mode='r')
-    if inp is None:
+    file_open = askopenfile(mode='r')
+    if file_open is None:
         return
-    file_name = inp.name
-    data = inp.read()
+    file_name = file_open.name
+    data = file_open.read()
     text.delete('1.0', END)
     text.insert('1.0', data)
 
 def save_as():
-    out = asksaveasfile(mode='w', defaultextension='.txt')
+    file_save = asksaveasfile(mode='w', defaultextension='.txt')
     data = text.get('1.0', END)
     try:
-        out.write(data.rstrip())
+        file_save.write(data.rstrip())
     except Exception:
         messagebox.showerror('Файл не сохранен')
 
